@@ -1,0 +1,62 @@
+spring:
+  mvc:
+    log-request-details: true
+  security:
+    user:
+      name: admin
+      password: 123
+  cloud:
+    config:
+      server:
+        git:
+          uri: 'file:///C:\Users\ksovath\workspace\app-data\docker-desktop\ms-config-file\'
+          search-paths: '{application}'
+  bus:
+    enabled: true
+
+server:
+  port: 8888
+
+application:
+  name: config-server
+
+info:
+  app:
+    name: config-server
+    description: spring-boot microservice demo
+    version: 1.0.0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  security:
+    enabled: false
+  info:
+    env:
+      enabled: true
+
+  endpoint:
+    health:
+      show-details: always
+  shutdown:
+    enabled: true
+
+
+logging:
+  level:
+    org:
+      springframework:
+        web: OFF
+      hibernate: ERROR
+
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %-38X{X-CorrelationId:-empty-correlation} %-40logger{0} : %msg%n'
+
+application-config:
+  endpoints-auth-whitelist:
+    - "/v3/api-docs"
+    - "/swagger-ui"
+    - "/actuator"
+    - "/env"
