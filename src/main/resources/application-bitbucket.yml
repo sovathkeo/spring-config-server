@@ -9,7 +9,7 @@ spring:
     config:
       server:
         git:
-          uri: 'file:///C:\Users\ksovath\workspace\app-data\docker-desktop\ms-config-file\'
+          uri: 'https://github.com/sovathkeo/microservice-application-setting'
           search-paths: '{application}'
   bus:
     enabled: true
